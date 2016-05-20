@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "UTF-8">
+    <title>Signup</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/style.css">
+  </head>
+
+  <body>
+    Username: <input type="text" id="username" name="username"/> <br/>
+    Password: <input type="password" id="password" name="password"/> <br/>
+    Name: <input type="text" id="name" name="name"/> <br/>
+    <input type="submit" id="submit" name="submit"/>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script>
+    $("#submit").click(function(event) {
+      var data = {
+        username: $("#username").val(),
+        password: $("#password").val(),
+        name: $("#name").val()
+      };
+
+      $.ajax({
+        url: "http://localhost:8080/signup",
+        type: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(data) {
+          alert("Sign up success");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert("error occurred");
+        }
+      });
+    });
+  </script>
+</html>

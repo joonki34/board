@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "UTF-8">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/style.css">
+  </head>
+
+  <body>
+    <form id="form" method="post">
+    Username: <input type="text" id="username" name="username"/> <br/>
+    Password: <input type="password" id="password" name="password"/> <br/>
+    <input type="submit" name="submit"/>
+    <form id="form" method="post">
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script>
+    $("form").submit(function(event) {
+      var data = {
+        username: $("#username").val(),
+        password: $("#password").val()
+      };
+
+      $.ajax({
+        url: "http://localhost:8080/login",
+        type: "POST",
+        data: data,
+        success: function(result) {
+          window.location.href = "/"
+        },
+        error: function(result) {
+
+        }
+      });
+      return false;
+    });
+  </script>
+</html>
